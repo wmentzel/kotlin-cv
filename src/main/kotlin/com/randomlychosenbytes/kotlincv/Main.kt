@@ -7,34 +7,35 @@ import com.itextpdf.tool.xml.XMLWorkerHelper
 import java.io.FileOutputStream
 import java.nio.charset.Charset
 
-
 fun main() {
     val result =
             html {
+
                 head {
-                    title { +"HTML encoding with Kotlin" }
+                    title { +"CV Willi Mentzel" }
                 }
+
                 body {
-                    h1 { +"HTML encoding with Kotlin" }
-                    p { +"this format can be used as an alternative markup to HTML" }
-
-                    // an element with attributes and text content
-                    a(href = "http://jetbrains.com/kotlin") { +"Kotlin" }
-
-                    // mixed content
-                    p {
-                        +"This is some"
-                        b { +"mixed" }
-                        +"text. For more see the"
-                        a(href = "http://jetbrains.com/kotlin") { +"Kotlin" }
-                        +"project"
-                    }
-                    p { +"some text" }
-
-                    // content generated from command-line arguments
-                    p {
-                        +"Command line arguments were:"
-                        ul {
+                    table(width = Distance(100, DistanceUnit.Percent)) {
+                        tr {
+                            td(colspan = 2) { +"CV" }
+                            td(colspan = 2) {
+                                +"""
+                                Willi-Wolfram Mentzel
+                                Example street 99, 99999 Dresden, Germany
+                                Phone No: +49 176 99 99 99 99
+                                Email Address: willi@example.com
+                                """.split("\n").joinToString(separator = "<br/>") {
+                                        it.trim()
+                                    }
+                                }
+                        }
+                        tr {
+                            td { +"col1" }
+                            td { +"col2" }
+                            td { +"col3" }
+                            td { +"col4" }
+                            td { +"col5" }
                         }
                     }
                 }
@@ -42,7 +43,7 @@ fun main() {
     println(result)
 
     val doc = Document(PageSize.A4)
-    val writer = PdfWriter.getInstance(doc, FileOutputStream("test.pdf"))
+    val writer = PdfWriter.getInstance(doc, FileOutputStream("cv.pdf"))
 
     doc.open()
 

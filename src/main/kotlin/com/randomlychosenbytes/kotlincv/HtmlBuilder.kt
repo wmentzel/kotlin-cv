@@ -5,6 +5,10 @@ package com.randomlychosenbytes.kotlincv
 * https://try.kotlinlang.org/#/Examples/Longer%20examples/HTML%20Builder/HTML%20Builder.kt
 */
 
+@DslMarker
+annotation class HtmlTagMarker
+
+@HtmlTagMarker
 interface Element {
     fun render(builder: StringBuilder, indent: String)
 }
@@ -56,8 +60,34 @@ abstract class TagWithText(name: String) : Tag(name) {
 
 class HTML() : TagWithText("html") {
     fun head(init: Head.() -> Unit) = initTag(Head(), init)
-
     fun body(init: Body.() -> Unit) = initTag(Body(), init)
+}
+
+class TD() : BodyTag("td") {
+    var colspan: Int
+        get() = attributes.getValue("colspan").toInt()
+        set(value) {
+            attributes["colspan"] = value.toString()
+        }
+}
+
+class TR() : Tag("tr") {
+    fun td(colspan: Int = 1, init: TD.() -> Unit) {
+        val td = initTag(TD(), init)
+        td.colspan = colspan
+    }
+}
+
+class Table() : Tag("table") {
+    var width: Distance?
+        get() = Distance.fromString(attributes.getValue("width"))
+        set(value) {
+            value?.let {
+                attributes["width"] = value.render()
+            }
+        }
+
+    fun tr(init: TR.() -> Unit) = initTag(TR(), init)
 }
 
 class Head() : TagWithText("head") {
@@ -74,6 +104,11 @@ abstract class BodyTag(name: String) : TagWithText(name) {
     fun a(href: String, init: A.() -> Unit) {
         val a = initTag(A(), init)
         a.href = href
+    }
+
+    fun table(width: Distance, init: Table.() -> Unit) {
+        val table = initTag(Table(), init)
+        table.width = width
     }
 }
 
