@@ -1,5 +1,13 @@
 package com.randomlychosenbytes.kotlincv
 
+import com.itextpdf.text.Document
+import com.itextpdf.text.PageSize
+import com.itextpdf.text.html.simpleparser.HTMLWorker
+import com.itextpdf.text.pdf.PdfWriter
+import java.io.FileOutputStream
+import java.io.StringReader
+
+
 fun main() {
     val result =
             html {
@@ -32,4 +40,11 @@ fun main() {
                 }
             }
     println(result)
+
+    val doc = Document(PageSize.A4)
+    PdfWriter.getInstance(doc, FileOutputStream("test.pdf"))
+    doc.open()
+    val hw = HTMLWorker(doc)
+    hw.parse(StringReader(result.toString()))
+    doc.close()
 }
