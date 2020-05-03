@@ -1,7 +1,7 @@
 package com.randomlychosenbytes.kotlincv
 
 /*
-* HTML buider as found here:
+* HTML builder as found here:
 * https://try.kotlinlang.org/#/Examples/Longer%20examples/HTML%20Builder/HTML%20Builder.kt
 */
 
@@ -9,13 +9,13 @@ interface Element {
     fun render(builder: StringBuilder, indent: String)
 }
 
-class TextElement(val text: String) : Element {
+class TextElement(private val text: String) : Element {
     override fun render(builder: StringBuilder, indent: String) {
         builder.append("$indent$text\n")
     }
 }
 
-abstract class Tag(val name: String) : Element {
+abstract class Tag(private val name: String) : Element {
     val children = arrayListOf<Element>()
     val attributes = hashMapOf<String, String>()
 
@@ -28,7 +28,7 @@ abstract class Tag(val name: String) : Element {
     override fun render(builder: StringBuilder, indent: String) {
         builder.append("$indent<$name${renderAttributes()}>\n")
         for (c in children) {
-            c.render(builder, indent + "  ")
+            c.render(builder, "$indent  ")
         }
         builder.append("$indent</$name>\n")
     }
@@ -36,11 +36,10 @@ abstract class Tag(val name: String) : Element {
     private fun renderAttributes(): String? {
         val builder = StringBuilder()
         for (a in attributes.keys) {
-            builder.append(" $a=\"${attributes[a]}\"")
+            builder.append(""" $a="${attributes[a]}"""")
         }
         return builder.toString()
     }
-
 
     override fun toString(): String {
         val builder = StringBuilder()
@@ -89,8 +88,8 @@ class P() : BodyTag("p")
 class H1() : BodyTag("h1")
 
 class A() : BodyTag("a") {
-    public var href: String
-        get() = attributes["href"]!!
+    var href: String
+        get() = attributes.getValue("href")
         set(value) {
             attributes["href"] = value
         }
