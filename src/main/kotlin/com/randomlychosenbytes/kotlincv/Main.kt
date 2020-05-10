@@ -4,6 +4,7 @@ import com.itextpdf.text.Document
 import com.itextpdf.text.PageSize
 import com.itextpdf.text.pdf.PdfWriter
 import com.itextpdf.tool.xml.XMLWorkerHelper
+import com.randomlychosenbytes.kotlincv.attributes.Width
 import java.io.FileOutputStream
 import java.nio.charset.Charset
 
@@ -16,10 +17,10 @@ fun main() {
                 }
 
                 body {
-                    table(width = Distance(100, DistanceUnit.Percent)) {
+                    table(Width(100, DistanceUnit.Percent)) {
                         tr {
-                            td(colspan = 2) { +"CV" }
-                            td(colspan = 3) {
+                            td(Width(30, DistanceUnit.Percent)) { +"CV" }
+                            td(Width(70, DistanceUnit.Percent)) {
                                 +"""
                                 Willi-Wolfram Mentzel
                                 Example street 99, 99999 Dresden, Germany
@@ -33,9 +34,6 @@ fun main() {
                         tr {
                             td { +"col1" }
                             td { +"col2" }
-                            td { +"col3" }
-                            td { +"col4" }
-                            td { +"col5" }
                         }
                     }
                 }

@@ -1,5 +1,9 @@
 package com.randomlychosenbytes.kotlincv
 
+import com.randomlychosenbytes.kotlincv.attributes.Attribute
+import com.randomlychosenbytes.kotlincv.attributes.Href
+import com.randomlychosenbytes.kotlincv.attributes.TdAttributes
+
 /*
 * HTML builder as found here:
 * https://try.kotlinlang.org/#/Examples/Longer%20examples/HTML%20Builder/HTML%20Builder.kt
@@ -21,7 +25,7 @@ class TextElement(private val text: String) : Element {
 
 abstract class Tag(private val name: String) : Element {
     val children = arrayListOf<Element>()
-    val attributes = hashMapOf<String, String>()
+    val attributes = mutableSetOf<Attribute>()
 
     protected fun <T : Element> initTag(tag: T, init: T.() -> Unit): T {
         tag.init()
@@ -30,18 +34,16 @@ abstract class Tag(private val name: String) : Element {
     }
 
     override fun render(builder: StringBuilder, indent: String) {
-        builder.append("$indent<$name${renderAttributes()}>\n")
+        val renderedAttributes = renderAttributes()
+
+        builder.append("$indent<$name${if (renderedAttributes.isEmpty()) "" else " $renderedAttributes"}>\n")
         for (c in children) {
             c.render(builder, "$indent  ")
         }
         builder.append("$indent</$name>\n")
     }
 
-    private fun renderAttributes() = attributes
-            .entries
-            .joinToString { (key, value) ->
-                """ $key="$value""""
-            }
+    private fun renderAttributes() = attributes.joinToString(separator = "") { it.render() }
 
     override fun toString(): String {
         val builder = StringBuilder()
@@ -61,32 +63,16 @@ class HTML() : TagWithText("html") {
     fun body(init: Body.() -> Unit) = initTag(Body(), init)
 }
 
-class TD() : BodyTag("td") {
-    var colspan: Int?
-        get() = attributes.getValue("colspan").toInt()
-        set(value) {
-            value?.let {
-                attributes["colspan"] = value.toString()
-            }
-        }
-}
+class TD() : BodyTag("td")
 
 class TR() : Tag("tr") {
-    fun td(colspan: Int? = null, init: TD.() -> Unit) {
+    fun td(vararg attributes: TdAttributes, init: TD.() -> Unit) {
         val td = initTag(TD(), init)
-        td.colspan = colspan
+        td.attributes += attributes
     }
 }
 
 class Table() : Tag("table") {
-    var width: Distance?
-        get() = Distance.fromString(attributes.getValue("width"))
-        set(value) {
-            value?.let {
-                attributes["width"] = value.render()
-            }
-        }
-
     fun tr(init: TR.() -> Unit) = initTag(TR(), init)
 }
 
@@ -97,18 +83,18 @@ class Head() : TagWithText("head") {
 class Title() : TagWithText("title")
 
 abstract class BodyTag(name: String) : TagWithText(name) {
-    fun b(init: B.() -> Unit) = initTag(B(), init)
-    fun p(init: P.() -> Unit) = initTag(P(), init)
-    fun h1(init: H1.() -> Unit) = initTag(H1(), init)
-    fun ul(init: UL.() -> Unit) = initTag(UL(), init)
-    fun a(href: String, init: A.() -> Unit) {
+    fun b(vararg attributes: Attribute, init: B.() -> Unit) = initTag(B(), init)
+    fun p(vararg attributes: Attribute, init: P.() -> Unit) = initTag(P(), init)
+    fun h1(vararg attributes: Attribute, init: H1.() -> Unit) = initTag(H1(), init)
+    fun ul(vararg attributes: Attribute, init: UL.() -> Unit) = initTag(UL(), init)
+    fun a(vararg attributes: Attribute, href: Href, init: A.() -> Unit) {
         val a = initTag(A(), init)
-        a.href = href
+        a.attributes += attributes
     }
 
-    fun table(width: Distance, init: Table.() -> Unit) {
+    fun table(vararg attributes: Attribute, init: Table.() -> Unit) {
         val table = initTag(Table(), init)
-        table.width = width
+        table.attributes += attributes
     }
 }
 
@@ -122,13 +108,7 @@ class LI() : BodyTag("li")
 class P() : BodyTag("p")
 class H1() : BodyTag("h1")
 
-class A() : BodyTag("a") {
-    var href: String
-        get() = attributes.getValue("href")
-        set(value) {
-            attributes["href"] = value
-        }
-}
+class A() : BodyTag("a")
 
 fun html(init: HTML.() -> Unit): HTML {
     val html = HTML()
