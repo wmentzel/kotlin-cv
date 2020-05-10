@@ -64,15 +64,17 @@ class HTML() : TagWithText("html") {
 }
 
 class TD() : BodyTag("td") {
-    var colspan: Int
+    var colspan: Int?
         get() = attributes.getValue("colspan").toInt()
         set(value) {
-            attributes["colspan"] = value.toString()
+            value?.let {
+                attributes["colspan"] = value.toString()
+            }
         }
 }
 
 class TR() : Tag("tr") {
-    fun td(colspan: Int = 1, init: TD.() -> Unit) {
+    fun td(colspan: Int? = null, init: TD.() -> Unit) {
         val td = initTag(TD(), init)
         td.colspan = colspan
     }

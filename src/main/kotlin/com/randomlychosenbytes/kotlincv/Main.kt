@@ -19,7 +19,7 @@ fun main() {
                     table(width = Distance(100, DistanceUnit.Percent)) {
                         tr {
                             td(colspan = 2) { +"CV" }
-                            td(colspan = 2) {
+                            td(colspan = 3) {
                                 +"""
                                 Willi-Wolfram Mentzel
                                 Example street 99, 99999 Dresden, Germany
