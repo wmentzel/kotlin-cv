@@ -2,6 +2,7 @@ package com.randomlychosenbytes.kotlincv
 
 import com.randomlychosenbytes.kotlincv.attributes.Attribute
 import com.randomlychosenbytes.kotlincv.attributes.Href
+import com.randomlychosenbytes.kotlincv.attributes.RenderableElement
 import com.randomlychosenbytes.kotlincv.attributes.table.TdAttributes
 
 /*
@@ -54,13 +55,20 @@ abstract class Tag(private val name: String) : Element {
 
 abstract class TagWithText(name: String) : Tag(name) {
     operator fun String.unaryPlus() {
-        children.add(TextElement(this))
+        children.add(TextElement(this.toSingleLine()))
+    }
+
+    fun br() {
+        children.add(TextElement(BR().render()))
     }
 }
 
 class HTML() : TagWithText("html") {
     fun head(init: Head.() -> Unit) = initTag(Head(), init)
-    fun body(init: Body.() -> Unit) = initTag(Body(), init)
+    fun body(vararg attributes: Attribute, init: Body.() -> Unit) {
+        val body = initTag(Body(), init)
+        body.attributes += attributes
+    }
 }
 
 class TD() : BodyTag("td")
@@ -109,6 +117,11 @@ class P() : BodyTag("p")
 class H1() : BodyTag("h1")
 
 class A() : BodyTag("a")
+
+class BR() : RenderableElement {
+    override fun toString() = render()
+    override fun render() = "<br/>"
+}
 
 fun html(init: HTML.() -> Unit): HTML {
     val html = HTML()
