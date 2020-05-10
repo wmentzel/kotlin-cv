@@ -2,7 +2,7 @@ package com.randomlychosenbytes.kotlincv
 
 import com.randomlychosenbytes.kotlincv.attributes.Attribute
 import com.randomlychosenbytes.kotlincv.attributes.Href
-import com.randomlychosenbytes.kotlincv.attributes.TdAttributes
+import com.randomlychosenbytes.kotlincv.attributes.table.TdAttributes
 
 /*
 * HTML builder as found here:
@@ -43,7 +43,7 @@ abstract class Tag(private val name: String) : Element {
         builder.append("$indent</$name>\n")
     }
 
-    private fun renderAttributes() = attributes.joinToString(separator = "") { it.render() }
+    private fun renderAttributes() = attributes.joinToString(separator = " ") { it.render() }
 
     override fun toString(): String {
         val builder = StringBuilder()

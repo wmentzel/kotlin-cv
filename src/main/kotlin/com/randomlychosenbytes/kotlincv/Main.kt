@@ -5,6 +5,8 @@ import com.itextpdf.text.PageSize
 import com.itextpdf.text.pdf.PdfWriter
 import com.itextpdf.tool.xml.XMLWorkerHelper
 import com.randomlychosenbytes.kotlincv.attributes.Width
+import com.randomlychosenbytes.kotlincv.attributes.style.FontSize
+import com.randomlychosenbytes.kotlincv.attributes.style.Style
 import java.io.FileOutputStream
 import java.nio.charset.Charset
 
@@ -19,7 +21,7 @@ fun main() {
                 body {
                     table(Width(100, DistanceUnit.Percent)) {
                         tr {
-                            td(Width(30, DistanceUnit.Percent)) { +"CV" }
+                            td(Width(30, DistanceUnit.Percent), Style(FontSize(50, DistanceUnit.Px))) { +"CV" }
                             td(Width(70, DistanceUnit.Percent)) {
                                 +"""
                                 Willi-Wolfram Mentzel
