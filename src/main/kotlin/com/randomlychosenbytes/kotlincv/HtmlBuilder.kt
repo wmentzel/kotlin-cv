@@ -37,13 +37,11 @@ abstract class Tag(private val name: String) : Element {
         builder.append("$indent</$name>\n")
     }
 
-    private fun renderAttributes(): String? {
-        val builder = StringBuilder()
-        for (a in attributes.keys) {
-            builder.append(""" $a="${attributes[a]}"""")
-        }
-        return builder.toString()
-    }
+    private fun renderAttributes() = attributes
+            .entries
+            .joinToString { (key, value) ->
+                """ $key="$value""""
+            }
 
     override fun toString(): String {
         val builder = StringBuilder()
