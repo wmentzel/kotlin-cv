@@ -124,8 +124,97 @@ fun main() {
                                 +"""I was working on a CRM system for the financial
                                 industry."""
                                 br(); br()
-                                """Tech: Kotlin, Spring Boot, Spring Data JPA, MySQL,
+                                +"""Tech: Kotlin, Spring Boot, Spring Data JPA, MySQL,
                                 AngularJS, HTML, JavaScript, Git"""
+                            }
+                        }
+                        tr {
+                            td { +"09/2016 - 01/2017" }
+                            td { b { +"Full Stack Software Developer (Working Student) at Sherpa.Dresden" } }
+                        }
+                        tr {
+                            td { }
+                            td {
+                                +"""I developed a web app to manage the cash flow for companies"""
+                                br(); br()
+                                +"""Tech: Java, Spring MVC, jQuery, HTML, CSS, Git"""
+                            }
+                        }
+                        tr {
+                            td { +"10/2013 - 08/2016" }
+                            td { b { +"Software Developer (Working Stundent) at FSD Fahrzeugsystemdaten GmbH" } }
+                        }
+                        tr {
+                            td { }
+                            td {
+                                +"""I helped with the management and conversion of vehicle
+                                specific data. Each deliverer (BMW, VW etc.) sends data
+                                to us which associates vehicles, which are identified
+                                with a VIN (vehicle identification number), with built-
+                                in systems. The problem is that the data formats vary
+                                greatly. We receive CSV, TXT, XSLX, XSL, ACCDB, MDB
+                                etc. files and our job is to evaluate and standardize
+                                the contained information."""
+                                br(); br()
+                                +"""So to summarize, I did: data conversion, data management, create GUIs for data manipulation."""
+                                br(); br()
+                                +"""Tech: Java, PostgreSQL, Bash, SQLite, MySQL, Git, SVN, PHP, JavaScript, CSS, HTML"""
+                            }
+                        }
+                        tr {
+                            td(Colspan(2)) {
+                                b { +"Education" }
+                            }
+                        }
+                        tr {
+                            td { +"10/2016 - 02/2017" }
+                            td {
+                                +"""Master of Science, TU Dresden (Media Computer Science), unfinished - because I was
+                                offered a full time position"""
+                            }
+                        }
+                        tr {
+                            td { +"10/2011 - 05/2016" }
+                            td { +"""Bachelor of Science, TU Dresden (Media Computer Science)""" }
+                        }
+                        tr {
+                            td { +"10/2010 - 04/2011" }
+                            td { +"""Bachelor of Science, TU Dresden (Mathematics), unfinished""" }
+                        }
+                        tr {
+                            td(Colspan(2)) {
+                                b { +"Skills" }
+                            }
+                        }
+                        tr {
+                            td { +"Kotlin" }
+                            td { b { +"""oooooooooo""" } }
+                        }
+                        tr {
+                            td { +"Spring Boot" }
+                            td {
+                                b { +"""ooooooooo""" }
+                                +"""o"""
+                            }
+                        }
+                        tr {
+                            td(Colspan(2)) {
+                                b { +"Interests" }
+                            }
+                        }
+                        tr {
+                            td(Colspan(2)) {
+                                +"- Strength training"
+                            }
+                        }
+                        tr {
+                            td(Colspan(2)) {
+                                +"- Long-distance running"
+                            }
+                        }
+                        tr {
+                            td(Colspan(2)) {
+                                +"- StackOverflow"
                             }
                         }
                     }
