@@ -22,7 +22,7 @@ fun main() {
                 }
 
                 body(Style(FontFamily("Courier New"))) {
-                    table(Width(100, DistanceUnit.Percent), Style(BorderSpacing(15, DistanceUnit.Px))) {
+                    table(Width(100, DistanceUnit.Percent), Style(BorderSpacing(20, DistanceUnit.Px))) {
                         tr {
                             td(Width(30, DistanceUnit.Percent), Style(FontSize(50, DistanceUnit.Px))) { +"CV" }
                             td(Width(70, DistanceUnit.Percent)) {
@@ -195,6 +195,95 @@ fun main() {
                             td {
                                 b { +"""ooooooooo""" }
                                 +"""o"""
+                            }
+                        }
+                        tr {
+                            td { +"Spring Data JPA" }
+                            td {
+                                b { +"""oooooooo""" }
+                                +"""oo"""
+                            }
+                        }
+                        tr {
+                            td { +"Spring Security" }
+                            td {
+                                b { +"""oooooo""" }
+                                +"""oooo"""
+                            }
+                        }
+                        tr {
+                            td { +"Java <= 7" }
+                            td {
+                                b { +"""ooooooo""" }
+                                +"""ooo"""
+                            }
+                        }
+                        tr {
+                            td { +"Java > 7" }
+                            td {
+                                b { +"""ooooo""" }
+                                +"""ooooo"""
+                            }
+                        }
+                        tr {
+                            td { +"Angular" }
+                            td {
+                                b { +"""ooooo""" }
+                                +"""ooooo"""
+                            }
+                        }
+                        tr {
+                            td { +"AngularJS" }
+                            td {
+                                b { +"""oooooo""" }
+                                +"""oooo"""
+                            }
+                        }
+                        tr {
+                            td { +"AngularJS" }
+                            td {
+                                b { +"""ooo""" }
+                                +"""ooooooo"""
+                            }
+                        }
+                        tr {
+                            td { +"TypeScript" }
+                            td {
+                                b { +"""ooooooo""" }
+                                +"""ooo"""
+                            }
+                        }
+                        tr {
+                            td { +"Docker" }
+                            td {
+                                b { +"""ooooo""" }
+                                +"""ooooo"""
+                            }
+                        }
+                        tr {
+                            td { +"Kubernetes" }
+                            td {
+                                b { +"""oooooo""" }
+                                +"""oooo"""
+                            }
+                        }
+                        tr {
+                            td { +"MySQL" }
+                            td {
+                                b { +"""oooooooo""" }
+                                +"""oo"""
+                            }
+                        }
+                        tr {
+                            td { +"German" }
+                            td {
+                                +"""first language"""
+                            }
+                        }
+                        tr {
+                            td { +"English" }
+                            td {
+                                +"""proficient"""
                             }
                         }
                         tr {
