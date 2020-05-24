@@ -94,6 +94,9 @@ abstract class BodyTag(name: String) : TagWithText(name) {
     fun b(vararg attributes: Attribute, init: B.() -> Unit) = initTag(B(), init)
     fun p(vararg attributes: Attribute, init: P.() -> Unit) = initTag(P(), init)
     fun h1(vararg attributes: Attribute, init: H1.() -> Unit) = initTag(H1(), init)
+    fun h2(vararg attributes: Attribute, init: H2.() -> Unit) = initTag(H2(), init)
+    fun h3(vararg attributes: Attribute, init: H3.() -> Unit) = initTag(H3(), init)
+    fun h4(vararg attributes: Attribute, init: H4.() -> Unit) = initTag(H4(), init)
     fun ul(vararg attributes: Attribute, init: UL.() -> Unit) = initTag(UL(), init)
     fun a(vararg attributes: Attribute, href: Href, init: A.() -> Unit) {
         val a = initTag(A(), init)
@@ -115,6 +118,9 @@ class B() : BodyTag("b")
 class LI() : BodyTag("li")
 class P() : BodyTag("p")
 class H1() : BodyTag("h1")
+class H2() : BodyTag("h2")
+class H3() : BodyTag("h3")
+class H4() : BodyTag("h4")
 
 class A() : BodyTag("a")
 
