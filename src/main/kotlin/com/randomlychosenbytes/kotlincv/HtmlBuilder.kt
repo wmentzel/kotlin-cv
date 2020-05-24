@@ -71,6 +71,8 @@ class HTML() : TagWithText("html") {
     }
 }
 
+class Span() : BodyTag("span")
+
 class TD() : BodyTag("td")
 
 class TR() : Tag("tr") {
@@ -91,8 +93,17 @@ class Head() : TagWithText("head") {
 class Title() : TagWithText("title")
 
 abstract class BodyTag(name: String) : TagWithText(name) {
-    fun b(vararg attributes: Attribute, init: B.() -> Unit) = initTag(B(), init)
+    fun b(vararg attributes: Attribute, init: B.() -> Unit) {
+        val b = initTag(B(), init)
+        b.attributes += attributes
+    }
+
     fun p(vararg attributes: Attribute, init: P.() -> Unit) = initTag(P(), init)
+    fun span(vararg attributes: Attribute, init: Span.() -> Unit) {
+        val span = initTag(Span(), init)
+        span.attributes += attributes
+    }
+
     fun h1(vararg attributes: Attribute, init: H1.() -> Unit) = initTag(H1(), init)
     fun h2(vararg attributes: Attribute, init: H2.() -> Unit) = initTag(H2(), init)
     fun h3(vararg attributes: Attribute, init: H3.() -> Unit) = initTag(H3(), init)
