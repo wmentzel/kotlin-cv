@@ -8,4 +8,3 @@ class Style(private vararg val styleElements: StyleElement) : Attribute, TdAttri
         it.render()
     }}""""
 }
-

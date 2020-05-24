@@ -5,6 +5,7 @@ import com.itextpdf.text.PageSize
 import com.itextpdf.text.pdf.PdfWriter
 import com.itextpdf.tool.xml.XMLWorkerHelper
 import com.randomlychosenbytes.kotlincv.attributes.Colspan
+import com.randomlychosenbytes.kotlincv.attributes.DecimalFormat
 import com.randomlychosenbytes.kotlincv.attributes.Width
 import com.randomlychosenbytes.kotlincv.attributes.style.*
 import java.io.File
@@ -36,7 +37,7 @@ fun main() {
                         }
                         tr {
                             td(Colspan(2)) {
-                                b { +"Personal Profile" }
+                                h3 { +"Personal Profile" }
                             }
                         }
                         tr {
@@ -186,90 +187,92 @@ fun main() {
                         }
                         tr {
                             td { +"Kotlin" }
-                            td { b { +"""oooooooooo""" } }
+                            td {
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o o o o o o o o o o""" }
+                            }
                         }
                         tr {
                             td { +"Spring Boot" }
                             td {
-                                b { +"""ooooooooo""" }
-                                +"""o"""
+                                b { +"""o o o o o o o o o""" }
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o""" }
                             }
                         }
                         tr {
                             td { +"Spring Data JPA" }
                             td {
-                                b { +"""oooooooo""" }
-                                +"""oo"""
+                                b { +"""o o o o o o o o""" }
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o o""" }
                             }
                         }
                         tr {
                             td { +"Spring Security" }
                             td {
-                                b { +"""oooooo""" }
-                                +"""oooo"""
+                                b { +"""o o o o o o""" }
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o o o o""" }
                             }
                         }
                         tr {
                             td { +"Java <= 7" }
                             td {
-                                b { +"""ooooooo""" }
-                                +"""ooo"""
+                                b { +"""o o o o o o o""" }
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o o o""" }
                             }
                         }
                         tr {
                             td { +"Java > 7" }
                             td {
-                                b { +"""ooooo""" }
-                                +"""ooooo"""
+                                b { +"""o o o o o""" }
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o o o o o""" }
                             }
                         }
                         tr {
                             td { +"Angular" }
                             td {
-                                b { +"""ooooo""" }
-                                +"""ooooo"""
+                                b { +"""o o o o o""" }
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o o o o o""" }
                             }
                         }
                         tr {
                             td { +"AngularJS" }
                             td {
-                                b { +"""oooooo""" }
-                                +"""oooo"""
+                                b { +"""o o o o o o""" }
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o o o o""" }
                             }
                         }
                         tr {
                             td { +"AngularJS" }
                             td {
-                                b { +"""ooo""" }
-                                +"""ooooooo"""
+                                b { +"""o o o""" }
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o o o o o o o""" }
                             }
                         }
                         tr {
                             td { +"TypeScript" }
                             td {
-                                b { +"""ooooooo""" }
-                                +"""ooo"""
+                                b { +"""o o o o o o o""" }
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o o o""" }
                             }
                         }
                         tr {
                             td { +"Docker" }
                             td {
-                                b { +"""ooooo""" }
-                                +"""ooooo"""
+                                b { +"""o o o o o""" }
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o o o o o""" }
                             }
                         }
                         tr {
                             td { +"Kubernetes" }
                             td {
-                                b { +"""oooooo""" }
-                                +"""oooo"""
+                                b { +"""o o o o o o""" }
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o o o o""" }
                             }
                         }
                         tr {
                             td { +"MySQL" }
                             td {
-                                b { +"""oooooooo""" }
-                                +"""oo"""
+                                b { +"""o o o o o o o o""" }
+                                span(Style(Color(DecimalFormat(128, 128, 128)))) { +"""o o""" }
                             }
                         }
                         tr {
