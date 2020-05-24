@@ -6,10 +6,8 @@ import com.itextpdf.text.pdf.PdfWriter
 import com.itextpdf.tool.xml.XMLWorkerHelper
 import com.randomlychosenbytes.kotlincv.attributes.Colspan
 import com.randomlychosenbytes.kotlincv.attributes.Width
-import com.randomlychosenbytes.kotlincv.attributes.style.BorderSpacing
-import com.randomlychosenbytes.kotlincv.attributes.style.FontFamily
-import com.randomlychosenbytes.kotlincv.attributes.style.FontSize
-import com.randomlychosenbytes.kotlincv.attributes.style.Style
+import com.randomlychosenbytes.kotlincv.attributes.style.*
+import java.io.File
 import java.io.FileOutputStream
 import java.nio.charset.Charset
 
@@ -310,6 +308,8 @@ fun main() {
                 }
             }
     println(result)
+
+    File("cv.html").writeText(result.toString())
 
     val doc = Document(PageSize.A4)
     val writer = PdfWriter.getInstance(doc, FileOutputStream("cv.pdf"))
