@@ -7,8 +7,8 @@ fun String.toSingleLine(keepNewlines: Boolean = false) = escapeChars()
         }
 
 val charsToEscape = mapOf(
-        '>' to "&gt",
-        '<' to "&lt"
+        '>' to "&gt;",
+        '<' to "&lt;"
 )
 
 fun String.escapeChars() = toCharArray().joinToString("") {
