@@ -291,17 +291,12 @@ fun main() {
                         }
                         tr {
                             td(Colspan(2)) {
-                                +"- Strength training"
-                            }
-                        }
-                        tr {
-                            td(Colspan(2)) {
-                                +"- Long-distance running"
-                            }
-                        }
-                        tr {
-                            td(Colspan(2)) {
-                                +"- StackOverflow"
+                                ul {
+                                    li { +"Strength training" }
+                                    li { +"Long-distance running" }
+                                    li { +"StackOverflow" }
+                                }
+
                             }
                         }
                     }
