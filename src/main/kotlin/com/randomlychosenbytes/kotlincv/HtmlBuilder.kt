@@ -28,8 +28,9 @@ abstract class Tag(private val name: String) : Element {
     val children = arrayListOf<Element>()
     val attributes = mutableSetOf<Attribute>()
 
-    protected fun <T : Element> initTag(tag: T, init: T.() -> Unit): T {
+    protected fun <T : Tag> initTag(tag: T, vararg attributes: Attribute, init: T.() -> Unit): T {
         tag.init()
+        tag.attributes += attributes
         children.add(tag)
         return tag
     }
@@ -64,11 +65,8 @@ abstract class TagWithText(name: String) : Tag(name) {
 }
 
 class HTML() : TagWithText("html") {
-    fun head(init: Head.() -> Unit) = initTag(Head(), init)
-    fun body(vararg attributes: Attribute, init: Body.() -> Unit) {
-        val body = initTag(Body(), init)
-        body.attributes += attributes
-    }
+    fun head(init: Head.() -> Unit) = initTag(Head(), init = init)
+    fun body(vararg attributes: Attribute, init: Body.() -> Unit) = initTag(Body(), *attributes, init = init)
 }
 
 class Span() : BodyTag("span")
@@ -76,53 +74,44 @@ class Span() : BodyTag("span")
 class TD() : BodyTag("td")
 
 class TR() : Tag("tr") {
-    fun td(vararg attributes: TdAttributes, init: TD.() -> Unit) {
-        val td = initTag(TD(), init)
-        td.attributes += attributes
-    }
+    fun td(vararg attributes: TdAttributes, init: TD.() -> Unit) = initTag(TD(), *attributes, init = init)
 }
 
 class Table() : Tag("table") {
-    fun tr(init: TR.() -> Unit) = initTag(TR(), init)
+    fun tr(vararg attributes: Attribute, init: TR.() -> Unit) = initTag(TR(), *attributes, init = init)
 }
 
 class Head() : TagWithText("head") {
-    fun title(init: Title.() -> Unit) = initTag(Title(), init)
+    fun title(init: Title.() -> Unit) = initTag(Title(), init = init)
 }
 
 class Title() : TagWithText("title")
 
 abstract class BodyTag(name: String) : TagWithText(name) {
-    fun b(vararg attributes: Attribute, init: B.() -> Unit) {
-        val b = initTag(B(), init)
-        b.attributes += attributes
-    }
+    fun b(vararg attributes: Attribute, init: B.() -> Unit) = initTag(B(), *attributes, init = init)
 
-    fun p(vararg attributes: Attribute, init: P.() -> Unit) = initTag(P(), init)
-    fun span(vararg attributes: Attribute, init: Span.() -> Unit) {
-        val span = initTag(Span(), init)
-        span.attributes += attributes
-    }
+    fun p(vararg attributes: Attribute, init: P.() -> Unit) = initTag(P(), *attributes, init = init)
 
-    fun h1(vararg attributes: Attribute, init: H1.() -> Unit) = initTag(H1(), init)
-    fun h2(vararg attributes: Attribute, init: H2.() -> Unit) = initTag(H2(), init)
-    fun h3(vararg attributes: Attribute, init: H3.() -> Unit) = initTag(H3(), init)
-    fun h4(vararg attributes: Attribute, init: H4.() -> Unit) = initTag(H4(), init)
-    fun ul(vararg attributes: Attribute, init: UL.() -> Unit) = initTag(UL(), init)
-    fun a(vararg attributes: Attribute, href: Href, init: A.() -> Unit) {
-        val a = initTag(A(), init)
-        a.attributes += attributes
-    }
+    fun span(vararg attributes: Attribute, init: Span.() -> Unit) = initTag(Span(), *attributes, init = init)
 
-    fun table(vararg attributes: Attribute, init: Table.() -> Unit) {
-        val table = initTag(Table(), init)
-        table.attributes += attributes
-    }
+    fun h1(vararg attributes: Attribute, init: H1.() -> Unit) = initTag(H1(), *attributes, init = init)
+
+    fun h2(vararg attributes: Attribute, init: H2.() -> Unit) = initTag(H2(), *attributes, init = init)
+
+    fun h3(vararg attributes: Attribute, init: H3.() -> Unit) = initTag(H3(), *attributes, init = init)
+
+    fun h4(vararg attributes: Attribute, init: H4.() -> Unit) = initTag(H4(), *attributes, init = init)
+
+    fun ul(vararg attributes: Attribute, init: UL.() -> Unit) = initTag(UL(), *attributes, init = init)
+
+    fun a(vararg attributes: Attribute, href: Href, init: A.() -> Unit) = initTag(A(), *attributes, init = init)
+
+    fun table(vararg attributes: Attribute, init: Table.() -> Unit) = initTag(Table(), *attributes, init = init)
 }
 
 class Body() : BodyTag("body")
 class UL() : BodyTag("ul") {
-    fun li(init: LI.() -> Unit) = initTag(LI(), init)
+    fun li(vararg attributes: Attribute, init: LI.() -> Unit) = initTag(LI(), *attributes, init = init)
 }
 
 class B() : BodyTag("b")
