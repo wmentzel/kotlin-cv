@@ -3,6 +3,7 @@ package com.randomlychosenbytes.kotlincv
 import com.itextpdf.text.Document
 import com.itextpdf.text.PageSize
 import com.itextpdf.text.pdf.PdfWriter
+import com.itextpdf.tool.xml.XMLWorkerFontProvider
 import com.itextpdf.tool.xml.XMLWorkerHelper
 import com.randomlychosenbytes.kotlincv.attributes.Colspan
 import com.randomlychosenbytes.kotlincv.attributes.DecimalFormat
@@ -20,7 +21,7 @@ fun main() {
                     title { +"CV Willi Mentzel" }
                 }
 
-                body(Style(FontFamily("Courier New"))) {
+                body(Style(FontFamily("CourierPrime-Regular"))) {
                     table(Width(100, DistanceUnit.Percent), Style(BorderSpacing(20, DistanceUnit.Px))) {
                         tr {
                             td(Width(30, DistanceUnit.Percent), Style(FontSize(50, DistanceUnit.Px))) { +"CV" }
@@ -306,12 +307,13 @@ fun main() {
                     }
                 }
             }
-    println(result)
 
     File("cv.html").writeText(result.toString())
 
     val doc = Document(PageSize.A4)
     val writer = PdfWriter.getInstance(doc, FileOutputStream("cv.pdf"))
+
+    val fontProvider = XMLWorkerFontProvider("Courier_Prime")
 
     doc.open()
 
@@ -321,7 +323,8 @@ fun main() {
             writer,
             doc,
             result.toString().byteInputStream(),
-            Charset.forName("UTF-8")
+            Charset.forName("UTF-8"),
+            fontProvider
     );
 
     doc.close()
