@@ -34,7 +34,7 @@ fun main() {
                         }
                         tr {
                             td(Colspan(2)) {
-                                h3 { +"Personal Profile" }
+                                h3(Style(Margin(bottom = 0, unit = DistanceUnit.Px))) { +"Personal Profile" }
                             }
                         }
                         tr {
@@ -44,7 +44,7 @@ fun main() {
                         }
                         tr {
                             td(Colspan(2)) {
-                                b { +"Career Objective" }
+                                h3(Style(Margin(bottom = 0, unit = DistanceUnit.Px))) { +"Career Objective" }
                             }
                         }
                         tr {
@@ -54,7 +54,7 @@ fun main() {
                         }
                         tr {
                             td(Colspan(2)) {
-                                b { +"Work Experience" }
+                                h3(Style(Margin(bottom = 0, unit = DistanceUnit.Px))) { +"Work Experience" }
                             }
                         }
                         tr {
@@ -159,7 +159,7 @@ fun main() {
                         }
                         tr {
                             td(Colspan(2)) {
-                                b { +"Education" }
+                                h3(Style(Margin(bottom = 0, unit = DistanceUnit.Px))) { +"Education" }
                             }
                         }
                         tr {
@@ -286,7 +286,7 @@ fun main() {
                         }
                         tr {
                             td(Colspan(2)) {
-                                b { +"Interests" }
+                                h3(Style(Margin(bottom = 0, unit = DistanceUnit.Px))) { +"Interests" }
                             }
                         }
                         tr {
