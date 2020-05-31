@@ -10,3 +10,20 @@ There already is a [kotlinx project](https://github.com/Kotlin/kotlinx.html) whi
 I wanted to do it on my own using [this](https://try.kotlinlang.org/#/Examples/Longer%20examples/HTML%20Builder/HTML%20Builder.kt) as starting point.
 
 There are tons of ways to go about it. My implementation is suited for my own suited for my limited use-case.
+
+# Build and run
+
+Check out the sources, navigate into the source directory and issue:
+
+For Linux:
+```
+./gradlew run
+```
+
+For Windows:
+```
+gradle.bat run
+```
+
+If everything went smoothly, the output should show the locations of the generated files (HTML and PDF).
+They should be located in the source directory.
