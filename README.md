@@ -3,7 +3,7 @@
 I needed my CV and wanted to be able to track changes via Git. 
 So, a binary format or a format not intended to be created and edited by humans (doc, docx) for the source was out of question. My goal was to create such a CV in Kotlin, the output format being a PDF document.
 
-There are several options to write the source of such a markup document - LaTeX, Markdown, (X)HTML etc. In my opinion LaTeX was too powerful and Markdown not sufficient.
+There are several options to write the source of such a markup document - LaTeX, Markdown, (X)HTML etc. In my opinion LaTeX was too powerful and Markdown not sufficient for my use-case.
 
 There already is a [kotlinx project](https://github.com/Kotlin/kotlinx.html) which supports a fair amount of HTMLs features (if not all!?).
 
