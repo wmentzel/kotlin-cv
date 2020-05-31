@@ -1,15 +1,21 @@
 # Motivation
 
-I needed my CV and wanted to be able to track changes via Git. 
-So, a binary format or a format not intended to be created and edited by humans (doc, docx) for the source was out of question. My goal was to create such a CV in Kotlin, the output format being a PDF document.
+Recently, I needed an up to date CV. I created a new one using Word. I didn't like it since I wanted to be able to track changes via Git. 
+So, a binary format or a format not intended to be created and edited by humans (doc, docx) for the source was out of question. 
 
-There are several options to write the source of such a markup document - LaTeX, Markdown, (X)HTML etc. In my opinion LaTeX was too powerful and Markdown not sufficient for my use-case.
+There are several options to write the source of such a markup document - LaTeX, Markdown, HTML etc. 
+In my opinion LaTeX was too powerful and Markdown not sufficient for my use-case. I decided to go with HTML.
 
-There already is a [kotlinx project](https://github.com/Kotlin/kotlinx.html) which supports a fair amount of HTMLs features (if not all!?).
+Since I love Kotlin and it is really great to create [DSLs (Domain Specific Languages)](https://en.wikipedia.org/wiki/Domain-specific_language), 
+I wanted to leverage that and create HTML code in a type-safe way.
 
-I wanted to do it on my own using [this](https://try.kotlinlang.org/#/Examples/Longer%20examples/HTML%20Builder/HTML%20Builder.kt) as starting point.
+There already is a [kotlinx project](https://github.com/Kotlin/kotlinx.html) which supports a fair amount of HTMLs features (if not all!?), but 
+to get a better understanding, I wanted to do it on my own using [this](https://try.kotlinlang.org/#/Examples/Longer%20examples/HTML%20Builder/HTML%20Builder.kt) as starting point.
 
-There are tons of ways to go about it. My implementation is suited for my own suited for my limited use-case.
+My implementation only covers a tiny subset of HTML. It is tailored to my specific, limited use-case and will be extended if I
+need new features for my CV.
+
+So, the CV is written in Kotlin and the output of this program will be an HTML and a PDF file.
 
 # Build and run
 
