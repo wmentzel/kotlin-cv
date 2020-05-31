@@ -10,7 +10,6 @@ import com.randomlychosenbytes.kotlincv.attributes.DecimalFormat
 import com.randomlychosenbytes.kotlincv.attributes.Width
 import com.randomlychosenbytes.kotlincv.attributes.style.*
 import java.io.File
-import java.io.FileOutputStream
 import java.nio.charset.Charset
 
 fun main() {
@@ -317,10 +316,13 @@ fun main() {
                 }
             }
 
-    File("cv.html").writeText(result.toString())
+    val htmlFile = File("cv.html")
+    val pdfFile = File("cv.pdf")
+
+    htmlFile.writeText(result.toString())
 
     val doc = Document(PageSize.A4)
-    val writer = PdfWriter.getInstance(doc, FileOutputStream("cv.pdf"))
+    val writer = PdfWriter.getInstance(doc, pdfFile.outputStream())
 
     val fontProvider = XMLWorkerFontProvider("Courier_Prime")
 
@@ -337,4 +339,7 @@ fun main() {
     );
 
     doc.close()
+
+    println("\nPDF file: ${pdfFile.absolutePath}")
+    println("HTML file: ${htmlFile.absolutePath}")
 }
