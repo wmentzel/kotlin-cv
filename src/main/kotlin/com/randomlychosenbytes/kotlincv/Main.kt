@@ -58,7 +58,21 @@ fun main() {
                             }
                         }
                         tr {
-                            td { +"01/2020 - Present" }
+                            td { +"06/2020 - Present" }
+                            td { b { +"Backend Engineer at Staffbase" } }
+                        }
+                        tr {
+                            td { }
+                            td {
+                                +"""
+                                I develop and improve RESTful backend services.
+                                """
+                                br(); br()
+                                +"""Tech: Kotlin, Spring Boot"""
+                            }
+                        }
+                        tr {
+                            td { +"01/2020 - 05/2020" }
                             td { b { +"Lead Software Developer at Innospire Group" } }
                         }
                         tr {
