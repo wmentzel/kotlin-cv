@@ -27,7 +27,7 @@ fun main() {
                             td(Width(30, DistanceUnit.Percent), Style(FontSize(50, DistanceUnit.Px))) { +"CV" }
                             td(Width(70, DistanceUnit.Percent)) {
                                 b { +"Willi-Wolfram Mentzel"; br() }
-                                +"""Example street 99, 99999 Dresden, Germany"""; br()
+                                +"""Example Street 99, 99999 Dresden, Germany"""; br()
                                 +"""Phone No: +49 176 99 99 99 99"""; br()
                                 +"""Email Address: willi@example.com"""; br()
                             }
