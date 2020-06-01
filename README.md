@@ -28,7 +28,7 @@ For Linux:
 
 For Windows:
 ```
-gradle.bat run
+gradlew.bat run
 ```
 
 If everything went smoothly, the output should show the locations of the generated files (HTML and PDF).
